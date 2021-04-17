@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-利润表（通用）(STK_INCOME_GEN)
+地址解析
 Created on 2021/04/17
 @author: cjq
 """

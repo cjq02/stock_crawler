@@ -18,8 +18,8 @@ from conf.request import API_URL, getHeaders
 from utils.time_utils import TimeDuration
 
 REPORT_NAME = '非经常性损益表'
-STOCK_INDEX = 3900
-LIMIT_SIZE = 88
+STOCK_INDEX = 3950
+LIMIT_SIZE = 38
 
 
 def main():
