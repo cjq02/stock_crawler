@@ -7,9 +7,10 @@ Created on 2021/04/15
 @author: cjq
 """
 
-import datetime
+
 import json
 import time
+from datetime import datetime
 
 import requests
 
@@ -18,8 +19,8 @@ from conf.request import API_URL, getHeaders
 from utils.time_utils import TimeDuration
 
 REPORT_NAME = '非经常性损益表'
-STOCK_INDEX = 3950
-LIMIT_SIZE = 38
+STOCK_INDEX = 0
+LIMIT_SIZE = 10
 
 
 def main():
@@ -36,7 +37,7 @@ def main():
         stock_index += 1
 
         print('{} {}，准备爬取第{}支股票，股票代码：{}， 股票名称：{}，已耗时：{}'.format(
-            datetime.datetime.now(), REPORT_NAME, stock_index, stock_code, stock_name, duration.getTillNow()))
+            datetime.now(), REPORT_NAME, stock_index, stock_code, stock_name, duration.getTillNow()))
 
         pageIndex = 1
         array = []
@@ -60,17 +61,17 @@ def main():
             if json_data['code'] != 200:
                 remain_count = LIMIT_SIZE + STOCK_INDEX - stock_index
                 print('{} 爬取失败，数据为空，当前剩余{}支股票，已耗时：{}'.format(
-                datetime.datetime.now(), remain_count, duration.getTillNow()))
+                datetime.now(), remain_count, duration.getTillNow()))
                 break
 
-            print('{} 成功爬取第{}页数据'.format(datetime.datetime.now(), pageIndex))
+            print('{} 成功爬取第{}页数据'.format(datetime.now(), pageIndex))
             
             array.extend(json_data['data'])
             pageIndex += 1
 
         remain_count = LIMIT_SIZE + STOCK_INDEX - stock_index
         print('{} 成功爬取数据，当前剩余{}支股票，已耗时：{}'.format(
-            datetime.datetime.now(), remain_count, duration.getTillNow()))
+            datetime.now(), remain_count, duration.getTillNow()))
 
         if len(array) == 0:
             continue
@@ -102,7 +103,7 @@ def append_sql_list(sql_list, corp_id, stockItem):
     amt6 = null_if(stockItem['END_BOOK_VAL'])
 
     sql = "UPDATE t_jj_corp_research_subsidy SET amt6={},update_ts='{}' WHERE corp_id = '{}' AND year = '{}'".format(
-        amt6, datetime.datetime.now(), corp_id, year)
+        amt6, datetime.now(), corp_id, year)
     sql_list.append(sql)
 
 
