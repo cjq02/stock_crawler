@@ -9,6 +9,9 @@ class TimeDuration(object):
         pass
 
     def start(self):
+        print("----------------")
+        print("| 任务开始执行 |")
+        print("----------------")
         self.start_time = datetime.datetime.now()
         self.end_time = None
 
@@ -34,6 +37,10 @@ class TimeDuration(object):
         delta = self.end_time - self.start_time
         delta_gmtime = time.gmtime(delta.total_seconds())
         durationStr = time.strftime("%H:%M:%S", delta_gmtime)
-        print('开始时间：{}'.format(self.start_time))
-        print('结束时间：{}'.format(self.end_time))
-        print('总耗时：{}'.format(durationStr))
+        print("----------------------------------------")
+        print("| 任务执行完成                         |")
+        print("----------------------------------------")
+        print('| 开始时间：{} |'.format(self.start_time))
+        print('| 结束时间：{} |'.format(self.end_time))
+        print('| 总耗时：{}                     |'.format(durationStr))
+        print("----------------------------------------")
