@@ -14,7 +14,7 @@ import psycopg2
 
 
 def get_conn():
-    return psycopg2.connect(database="szfile_dev", user="szfile_dev", password="szfile_dev", host="120.79.137.53", port="5432")
+    return psycopg2.connect(database="", user="", password="", host="", port="5432")
 
 
 def execute_sql(sql):
