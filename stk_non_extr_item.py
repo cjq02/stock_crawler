@@ -11,6 +11,7 @@ Created on 2021/04/15
 import json
 import time
 from datetime import datetime
+import sys
 
 import requests
 
@@ -19,8 +20,8 @@ from conf.request import API_URL, getHeaders
 from utils.time_utils import TimeDuration
 
 REPORT_NAME = '非经常性损益表'
-STOCK_INDEX = 0
-LIMIT_SIZE = 10
+LIMIT_SIZE = int(sys.argv[1])
+STOCK_INDEX = int(sys.argv[2])
 
 
 def main():
@@ -43,7 +44,7 @@ def main():
         array = []
 
         while(True):
-            url = '/db/STK_NON_EXTR_ITEM/full=2&filter-COMCODE-int={}&filter-RPT_SRC-str=年报&filter-RPT_DATE-gte-dt=20151231&zip=Gzip&skip=0&limit=20'.format(
+            url = '/db/STK_NON_EXTR_ITEM/full=2&filter-COMCODE-int={}&filter-RPT_SRC-str=年报&filter-RPT_DATE-gte-dt=20201231&zip=Gzip&skip=0&limit=20'.format(
                 corp_code)
 
             data = {

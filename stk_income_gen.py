@@ -10,6 +10,7 @@ Created on 2021/04/16
 import datetime
 import json
 import time
+import sys
 
 import requests
 
@@ -18,8 +19,10 @@ from conf.request import API_URL, getHeaders
 from utils.time_utils import TimeDuration
 
 REPORT_NAME = '利润表'
-STOCK_INDEX = 3985
-LIMIT_SIZE = 3
+LIMIT_SIZE = int(sys.argv[1])
+STOCK_INDEX = int(sys.argv[2])
+
+# print('输入参数：STOCK_INDEX:{}，LIMIT_SIZE:{}'.format(STOCK_INDEX, LIMIT_SIZE))
 
 
 def main():
@@ -33,7 +36,7 @@ def main():
         stock_code = row[1]
         stock_name = row[2]
         stock_index += 1
-        url = '/db/STK_INCOME_GEN/full=2&filter-A_STOCKCODE-str={}&filter-RPT_SRC-str=年报&filter-RPT_TYPE-str=合并&filter-RPT_DATE-gte-dt=20151231&zip=Gzip&field=RPT_DATE,ENDDATE,A_STOCKCODE,P110101,P150101,P110205&skip=0&limit=20'.format(
+        url = '/db/STK_INCOME_GEN/full=2&filter-A_STOCKCODE-str={}&filter-RPT_SRC-str=年报&filter-RPT_TYPE-str=合并&filter-RPT_DATE-gte-dt=20201231&zip=Gzip&field=RPT_DATE,ENDDATE,A_STOCKCODE,P110101,P150101,P110205&skip=0&limit=20'.format(
             stock_code)
 
         data = {
