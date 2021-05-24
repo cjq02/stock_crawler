@@ -1,14 +1,13 @@
 import json
 import os
-import xlrd
-import csv
+import random
+import requests
+import sys
 from time import sleep
 from urllib import parse
-import random
 
-import requests
 
-YEAR_REPORT_DIC = 'Stock Year Reports'
+YEAR_REPORT_DIC = sys.argv[1]
 
 def get_address(stock_name):
     url = "http://www.cninfo.com.cn/new/information/topSearch/detailOfQuery"

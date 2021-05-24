@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-导出数据到excel
+修改文件夹名称
 Created on 2021/05/20
 @author: cjq
 """
